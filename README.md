@@ -40,6 +40,12 @@ This class order is used consistently across training and inference.
 
 *Upload a potato leaf image to receive an instant Early Blight, Late Blight, or Healthy classification.*
 
+| Class | Accuracy |
+|-------|----------|
+| Early Blight | 92%+ |
+| Late Blight | 90%+ |
+| Healthy | 90%+ |
+
 ## Deployment
 
 The trained model is deployed using Google Cloud Functions. The function:
@@ -51,12 +57,6 @@ The trained model is deployed using Google Cloud Functions. The function:
 - Restricts CORS access to the production website
 
 The model files are stored in a Google Cloud Storage bucket and downloaded on cold starts.
-
-| Class | Accuracy |
-|-------|----------|
-| Early Blight | 92%+ |
-| Late Blight | 90%+ |
-| Healthy | 90%+ |
 
 ## Web application
 
@@ -71,11 +71,10 @@ The interface enforces a 15 MB upload limit and allows one classification per im
 
 ## How to run locally
 
-1. Install Python dependencies from the [requirements.txt](https://github.com/KrisN13/Potato_Blight_App/blob/main/requirements.txt)
-2. Place the exported model under a `/models` directory
+1. Install Python dependencies: `pip install -r requirements.txt`
+2. The trained model is loaded automatically from Google Cloud Storage on startup — no local model files required
 3. Start the local Functions Framework
-4. Send a POST request with an image: curl -X POST -F "file=@your_image.jpg"
-
+4. Send a POST request with an image: `curl -X POST -F "file=@your_image.jpg"`
 
 ## Notes
 
