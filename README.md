@@ -1,6 +1,18 @@
 # Potato Disease Classification App
 
-This project builds and deploys a convolutional neural network that classifies potato leaf images into three categories: Early Blight, Late Blight and Healthy. The model was trained using TensorFlow and deployed as a serverless API on Google Cloud Functions. A simple web interface allows users to upload an image and receive predictions in real time.
+## Snapshot
+
+- Application detects Early, and Late Blight, as well as healthy potato plant leaves
+- Simple web interface allows users to upload an image and receive predictions in real time
+- Achieved a +90% classification accuracy
+- Over 2,500 images used to train the model
+- Trained using TensorFlow
+- Deployed as a serverless API on Google Cloud
+- Primarily aimed at farmers and agriculturists who are trying to maintain healthy potato plants
+
+## Problem
+
+Potato blight is a fungal disease responsible for significant crop losses globally, including the Irish Famine of the 1840s. Early detection is critical, as late-stage blight can destroy an entire crop within days. Traditional identification relies on expert visual inspection, which is inaccessible to many smallholder farmers.
 
 ## Project structure
 
@@ -22,6 +34,12 @@ The model is a convolutional neural network trained on the PlantVillage potato l
 
 This class order is used consistently across training and inference.
 
+<a href="https://krisnoondata.com/potato-blight-disease-application">
+  <img src="https://github.com/KrisN13/Potato_Blight_App/blob/main/images/Potato_App_Interface.png" alt="Application Interface" width="700"/>
+</a>
+
+*Upload a potato leaf image to receive an instant Early Blight, Late Blight, or Healthy classification.*
+
 ## Deployment
 
 The trained model is deployed using Google Cloud Functions. The function:
@@ -33,6 +51,12 @@ The trained model is deployed using Google Cloud Functions. The function:
 - Restricts CORS access to the production website
 
 The model files are stored in a Google Cloud Storage bucket and downloaded on cold starts.
+
+| Class | Accuracy |
+|-------|----------|
+| Early Blight | 92%+ |
+| Late Blight | 90%+ |
+| Healthy | 90%+ |
 
 ## Web application
 
@@ -47,7 +71,7 @@ The interface enforces a 15 MB upload limit and allows one classification per im
 
 ## How to run locally
 
-1. Install Python dependencies
+1. Install Python dependencies from the [requirements.txt](https://github.com/KrisN13/Potato_Blight_App/blob/main/requirements.txt)
 2. Place the exported model under a `/models` directory
 3. Start the local Functions Framework
 4. Send a POST request with an image: curl -X POST -F "file=@your_image.jpg"
